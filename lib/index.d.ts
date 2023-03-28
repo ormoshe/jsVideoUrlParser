@@ -15,3 +15,4 @@ export * from './provider/youku';
 export * from './provider/youtube';
 export * from './provider/ted';
 export * from './provider/tiktok';
+export * from './provider/voomly';
