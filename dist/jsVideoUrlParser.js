@@ -1577,11 +1577,18 @@
     };
   }
 
+  Voomly.prototype.parseUrl = function(url) {
+    var match = url.match(
+      /(?:v|embed)\/([a-zA-Z\d]+)/i
+    );
+    return match ? match[1] : undefined;
+  };
+  
   Voomly.prototype.parse = function(url, params) {
     var result = {
       mediaType: this.mediaTypes.VIDEO,
       params: params,
-      id: this.parseUrl(url),
+      id: this.parseUrl(url)
     };
     return result.id ? result : undefined;
   };
