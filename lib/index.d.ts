@@ -16,3 +16,4 @@ export * from './provider/youtube';
 export * from './provider/ted';
 export * from './provider/tiktok';
 export * from './provider/voomly';
+export * from './provider/spotlightr';
