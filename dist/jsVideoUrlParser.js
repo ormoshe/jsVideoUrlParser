@@ -1624,8 +1624,9 @@
 
   Spotlightr.prototype.parseUrl = function(url) {
     var match = url.match(
-      /(?:watch)\/([a-zA-Z\d]+)/i
+      /(?:watch|embed)\/([a-zA-Z\d]+)/i
     );
+    //var match = url.match(/(?:\/(\d+))?\/watch(?:\/.*?)?\/(\d+)/i);
     return match ? match[1] : undefined;
   };
   
