@@ -1698,6 +1698,48 @@
   
   base.bind(new Bunny());
 
+  var combineParams$i = util.combineParams;
+
+  function Canva() {
+    this.provider = 'canva';
+    this.defaultFormat = 'long';
+    this.formats = {
+      long: this.createLongUrl,
+    };
+    this.mediaTypes = {
+      VIDEO: 'video',
+    };
+  }
+  
+  Canva.prototype.parse = function(url, params) {
+    var match = url.match(
+      /(?:design)\/([a-zA-Z\d]+)\/([\w-]+)/i
+    );
+    var result = {
+      mediaType: this.mediaTypes.VIDEO,
+      params: params,
+      library: match[1],
+      id: match[2]
+    };
+    return result.id ? result : undefined;
+  };
+
+  Canva.prototype.createUrl = function(baseUrl, vi, params) {
+    if (!vi.id || vi.mediaType !== this.mediaTypes.VIDEO) {
+      return undefined;
+    }
+  
+    var url = baseUrl + vi.library + '/' + vi.id + '/watch?embed';
+    url += combineParams$i(params);
+    return url;
+  };
+  
+  Canva.prototype.createLongUrl = function(vi, params) {
+    return this.createUrl('https://www.canva.com/design/', vi, params);
+  };
+  
+  base.bind(new Canva());
+
   var lib = base;
 
   return lib;
