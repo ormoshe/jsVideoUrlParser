@@ -1712,14 +1712,11 @@
   }
   
   Canva.prototype.parse = function(url, params) {
-    var match = url.match(
-      /(?:design)\/([a-zA-Z\d]+)\/([\w-]+)/i
-    );
+    var match = url.match(/\/design\/([\w-]+)/);
     var result = {
       mediaType: this.mediaTypes.VIDEO,
       params: params,
-      library: match[1],
-      id: match[2]
+      id: match[1]
     };
     return result.id ? result : undefined;
   };
@@ -1729,7 +1726,7 @@
       return undefined;
     }
   
-    var url = baseUrl + vi.library + '/' + vi.id + '/watch?embed';
+    var url = baseUrl + vi.id + '/watch?embed';
     url += combineParams$i(params);
     return url;
   };
