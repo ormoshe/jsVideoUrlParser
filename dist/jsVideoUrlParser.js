@@ -1737,6 +1737,45 @@
   
   base.bind(new Canva());
 
+  var combineParams$j = util.combineParams;
+
+  function Canva() {
+    this.provider = 'google';
+    this.defaultFormat = 'long';
+    this.formats = {
+      long: this.createLongUrl,
+    };
+    this.mediaTypes = {
+      VIDEO: 'video',
+    };
+  }
+  
+  Canva.prototype.parse = function(url, params) {
+    var match = url.match(/\/d\/([\w-]+)/);
+    var result = {
+      mediaType: this.mediaTypes.VIDEO,
+      params: params,
+      id: match[1]
+    };
+    return result.id ? result : undefined;
+  };
+
+  Canva.prototype.createUrl = function(baseUrl, vi, params) {
+    if (!vi.id || vi.mediaType !== this.mediaTypes.VIDEO) {
+      return undefined;
+    }
+  
+    var url = baseUrl + vi.id + '/preview';
+    url += combineParams$j(params);
+    return url;
+  };
+  
+  Canva.prototype.createLongUrl = function(vi, params) {
+    return this.createUrl('https://drive.google.com/file/d/', vi, params);
+  };
+  
+  base.bind(new Canva());
+
   var lib = base;
 
   return lib;
