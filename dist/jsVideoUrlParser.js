@@ -1739,7 +1739,7 @@
 
   var combineParams$j = util.combineParams;
 
-  function Canva() {
+  function Google() {
     this.provider = 'google';
     this.defaultFormat = 'long';
     this.formats = {
@@ -1750,7 +1750,7 @@
     };
   }
   
-  Canva.prototype.parse = function(url, params) {
+  Google.prototype.parse = function(url, params) {
     var match = url.match(/\/d\/([\w-]+)/);
     var result = {
       mediaType: this.mediaTypes.VIDEO,
@@ -1760,7 +1760,7 @@
     return result.id ? result : undefined;
   };
 
-  Canva.prototype.createUrl = function(baseUrl, vi, params) {
+  Google.prototype.createUrl = function(baseUrl, vi, params) {
     if (!vi.id || vi.mediaType !== this.mediaTypes.VIDEO) {
       return undefined;
     }
@@ -1770,11 +1770,53 @@
     return url;
   };
   
-  Canva.prototype.createLongUrl = function(vi, params) {
+  Google.prototype.createLongUrl = function(vi, params) {
     return this.createUrl('https://drive.google.com/file/d/', vi, params);
   };
   
-  base.bind(new Canva());
+  base.bind(new Google());
+
+  var combineParams$k = util.combineParams;
+
+  function Groove() {
+    this.provider = 'groove';
+    this.defaultFormat = 'long';
+    this.formats = {
+      long: this.createLongUrl,
+    };
+    this.mediaTypes = {
+      VIDEO: 'video',
+    };
+  }
+  
+  Groove.prototype.parse = function(url, params) {
+    var match = url.match(
+      /(?:videopage)\/([\w-]+)\/([\w-]+)/i
+    );
+    var result = {
+      mediaType: this.mediaTypes.VIDEO,
+      params: params,
+      library: match[1],
+      id: match[2]
+    };
+    return result.id ? result : undefined;
+  };
+
+  Groove.prototype.createUrl = function(baseUrl, vi, params) {
+    if (!vi.id || vi.mediaType !== this.mediaTypes.VIDEO) {
+      return undefined;
+    }
+  
+    var url = baseUrl + vi.library + '/' + vi.id;
+    url += combineParams(params);
+    return url;
+  };
+  
+  Groove.prototype.createLongUrl = function(vi, params) {
+    return this.createUrl('https://app.groove.cm/groovevideo/videopage/', vi, params);
+  };
+  
+  base.bind(new Groove());
 
   var lib = base;
 
