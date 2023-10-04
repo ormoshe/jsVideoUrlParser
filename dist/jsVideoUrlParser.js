@@ -1808,7 +1808,7 @@
     }
   
     var url = baseUrl + vi.library + '/' + vi.id;
-    url += combineParams(params);
+    url += combineParams$k(params);
     return url;
   };
   
@@ -1817,6 +1817,47 @@
   };
   
   base.bind(new Groove());
+
+  var combineParams$l = util.combineParams;
+
+  function Streamable() {
+    this.provider = 'streamable';
+    this.defaultFormat = 'long';
+    this.formats = {
+      long: this.createLongUrl,
+    };
+    this.mediaTypes = {
+      VIDEO: 'video',
+    };
+  }
+  
+  Streamable.prototype.parse = function(url, params) {
+    var match = url.match(
+      /com\/(?:streamable\/)?([\w-]+)/
+    );
+    var result = {
+      mediaType: this.mediaTypes.VIDEO,
+      params: params,
+      id: match[1]
+    };
+    return result.id ? result : undefined;
+  };
+
+  Streamable.prototype.createUrl = function(baseUrl, vi, params) {
+    if (!vi.id || vi.mediaType !== this.mediaTypes.VIDEO) {
+      return undefined;
+    }
+  
+    var url = baseUrl + vi.library + '/' + vi.id;
+    url += combineParams$l(params);
+    return url;
+  };
+  
+  Streamable.prototype.createLongUrl = function(vi, params) {
+    return this.createUrl('https://streamable.com/', vi, params);
+  };
+  
+  base.bind(new Streamable());
 
   var lib = base;
 
