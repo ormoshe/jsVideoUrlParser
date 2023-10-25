@@ -1859,6 +1859,47 @@
   
   base.bind(new Streamable());
 
+  var combineParams$m = util.combineParams;
+
+  function Bigcommand() {
+    this.provider = 'bigcommand';
+    this.defaultFormat = 'long';
+    this.formats = {
+      long: this.createLongUrl,
+    };
+    this.mediaTypes = {
+      VIDEO: 'video',
+    };
+  }
+  
+  Bigcommand.prototype.parse = function(url, params) {
+    var match = url.match(
+      /(?:watch)\/([\w-]+)/i
+    );
+    var result = {
+      mediaType: this.mediaTypes.VIDEO,
+      params: params,
+      id: match[1]
+    };
+    return result.id ? result : undefined;
+  };
+
+  Bigcommand.prototype.createUrl = function(baseUrl, vi, params) {
+    if (!vi.id || vi.mediaType !== this.mediaTypes.VIDEO) {
+      return undefined;
+    }
+  
+    var url = baseUrl + vi.library + '/' + vi.id;
+    url += combineParams$m(params);
+    return url;
+  };
+  
+  Bigcommand.prototype.createLongUrl = function(vi, params) {
+    return this.createUrl('https://adilo.bigcommand.com/watch/', vi, params);
+  };
+  
+  base.bind(new Bigcommand());
+
   var lib = base;
 
   return lib;
