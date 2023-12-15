@@ -1579,7 +1579,7 @@
 
   Voomly.prototype.parseUrl = function(url) {
     var match = url.match(
-      /(?:v|embed)\/([a-zA-Z\d]+)/i
+      /(?:v|embed)\/([\w-]+)/i
     );
     return match ? match[1] : undefined;
   };
