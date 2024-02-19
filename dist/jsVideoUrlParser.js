@@ -1712,7 +1712,7 @@
   }
   
   Canva.prototype.parse = function(url, params) {
-    var match = url.match(/\/design\/([\w-]+)/);
+    var match = url.match(/\/design\/(.+)\/watch/);
     var result = {
       mediaType: this.mediaTypes.VIDEO,
       params: params,
