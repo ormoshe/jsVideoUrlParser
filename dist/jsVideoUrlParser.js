@@ -1900,6 +1900,47 @@
   
   base.bind(new Bigcommand());
 
+  var combineParams$n = util.combineParams;
+
+  function Searchie() {
+    this.provider = 'searchie';
+    this.defaultFormat = 'long';
+    this.formats = {
+      long: this.createLongUrl,
+    };
+    this.mediaTypes = {
+      VIDEO: 'video',
+    };
+  }
+  
+  Searchie.prototype.parse = function(url, params) {
+    var match = url.match(
+      /(?:watch)\/([\w-]+)/i
+    );
+    var result = {
+      mediaType: this.mediaTypes.VIDEO,
+      params: params,
+      id: match[1]
+    };
+    return result.id ? result : undefined;
+  };
+
+  Searchie.prototype.createUrl = function(baseUrl, vi, params) {
+    if (!vi.id || vi.mediaType !== this.mediaTypes.VIDEO) {
+      return undefined;
+    }
+  
+    var url = baseUrl + vi.library + '/' + vi.id;
+    url += combineParams$n(params);
+    return url;
+  };
+  
+  Searchie.prototype.createLongUrl = function(vi, params) {
+    return this.createUrl('https://app.searchie.io/watch/', vi, params);
+  };
+  
+  base.bind(new Searchie());
+
   var lib = base;
 
   return lib;
