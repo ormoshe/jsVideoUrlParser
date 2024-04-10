@@ -1973,7 +1973,7 @@
     }
   
     var url = baseUrl + vi.library + '/' + vi.id;
-    url += combineParams$h(params);
+    url += combineParams$o(params);
     return url;
   };
   
