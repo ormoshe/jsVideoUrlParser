@@ -200,7 +200,7 @@
 	};
 	base.bind(new Allocine());
 
-	var combineParams$p = util.combineParams;
+	var combineParams$q = util.combineParams;
 	function CanalPlus() {
 	  this.provider = 'canalplus';
 	  this.defaultFormat = 'embed';
@@ -233,12 +233,12 @@
 	  }
 	  var url = 'http://player.canalplus.fr/embed/';
 	  params.vid = vi.id;
-	  url += combineParams$p(params);
+	  url += combineParams$q(params);
 	  return url;
 	};
 	base.bind(new CanalPlus());
 
-	var combineParams$o = util.combineParams;
+	var combineParams$p = util.combineParams;
 	function Coub() {
 	  this.provider = 'coub';
 	  this.defaultFormat = 'long';
@@ -270,7 +270,7 @@
 	    return undefined;
 	  }
 	  var url = baseUrl + vi.id;
-	  url += combineParams$o(params);
+	  url += combineParams$p(params);
 	  return url;
 	};
 	Coub.prototype.createLongUrl = function (vi, params) {
@@ -281,7 +281,7 @@
 	};
 	base.bind(new Coub());
 
-	var combineParams$n = util.combineParams,
+	var combineParams$o = util.combineParams,
 	  getTime$5 = util.getTime;
 	function Dailymotion() {
 	  this.provider = 'dailymotion';
@@ -323,7 +323,7 @@
 	  if (!vi.id || vi.mediaType !== this.mediaTypes.VIDEO) {
 	    return undefined;
 	  }
-	  return base + vi.id + combineParams$n(params);
+	  return base + vi.id + combineParams$o(params);
 	};
 	Dailymotion.prototype.createShortUrl = function (vi, params) {
 	  return this.createUrl('https://dai.ly/', vi, params);
@@ -340,7 +340,7 @@
 	};
 	base.bind(new Dailymotion());
 
-	var combineParams$m = util.combineParams;
+	var combineParams$n = util.combineParams;
 	function Loom() {
 	  this.provider = 'loom';
 	  this.defaultFormat = 'long';
@@ -369,7 +369,7 @@
 	    return undefined;
 	  }
 	  var url = baseUrl + vi.id;
-	  url += combineParams$m(params);
+	  url += combineParams$n(params);
 	  return url;
 	};
 	Loom.prototype.createLongUrl = function (vi, params) {
@@ -379,6 +379,46 @@
 	  return this.createUrl('//loom.com/embed/', vi, params);
 	};
 	base.bind(new Loom());
+
+	var combineParams$m = util.combineParams;
+	function Tella() {
+	  this.provider = 'tella';
+	  this.defaultFormat = 'long';
+	  this.formats = {
+	    "long": this.createLongUrl,
+	    embed: this.createEmbedUrl
+	  };
+	  this.mediaTypes = {
+	    VIDEO: 'video'
+	  };
+	}
+	Tella.prototype.parseUrl = function (url) {
+	  var match = url.match(/(?:video)\/([\w-]+)/i);
+	  return match ? match[1] : undefined;
+	};
+	Tella.prototype.parse = function (url, params) {
+	  var result = {
+	    mediaType: this.mediaTypes.VIDEO,
+	    params: params,
+	    id: this.parseUrl(url)
+	  };
+	  return result.id ? result : undefined;
+	};
+	Tella.prototype.createUrl = function (baseUrl, vi, params) {
+	  if (!vi.id || vi.mediaType !== this.mediaTypes.VIDEO) {
+	    return undefined;
+	  }
+	  var url = baseUrl + vi.id;
+	  url += combineParams$m(params);
+	  return url;
+	};
+	Tella.prototype.createLongUrl = function (vi, params) {
+	  return this.createUrl('https://www.tella.tv/video/', vi, params);
+	};
+	Tella.prototype.createEmbedUrl = function (vi, params) {
+	  return this.createUrl('https://www.tella.tv/video/', vi, params);
+	};
+	base.bind(new Tella());
 
 	var combineParams$l = util.combineParams,
 	  getTime$4 = util.getTime;
@@ -1622,7 +1662,7 @@
 	  };
 	}
 	Streamable.prototype.parseUrl = function (url) {
-	  var match = url.match(/com\/(?:streamable\/)?([\w-]+)/);
+	  var match = url.match(/com\/(?:e\/|streamable\/)?([\w-]+)/);
 	  //var match = url.match(/(?:\/(\d+))?\/watch(?:\/.*?)?\/(\d+)/i);
 	  return match ? match[1] : undefined;
 	};
