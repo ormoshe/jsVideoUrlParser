@@ -19,3 +19,4 @@ export * from './provider/voomly';
 export * from './provider/spotlightr';
 export * from './provider/bunny';
 export * from './provider/canva';
+export * from './provider/gumlet';
