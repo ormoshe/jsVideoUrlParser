@@ -1,6 +1,6 @@
 {
   "name": "@ormoshe/js-video-url-parser",
-  "version": "0.5.35",
+  "version": "0.5.36",
   "description": "A parser to extract provider, video id, starttime and others from YouTube, Vimeo, ... urls",
   "main": "lib/index.js",
   "browser": "dist/jsVideoUrlParser.js",
