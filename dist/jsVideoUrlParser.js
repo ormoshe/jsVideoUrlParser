@@ -200,7 +200,7 @@
 	};
 	base.bind(new Allocine());
 
-	var combineParams$u = util.combineParams;
+	var combineParams$v = util.combineParams;
 	function CanalPlus() {
 	  this.provider = 'canalplus';
 	  this.defaultFormat = 'embed';
@@ -233,12 +233,12 @@
 	  }
 	  var url = 'http://player.canalplus.fr/embed/';
 	  params.vid = vi.id;
-	  url += combineParams$u(params);
+	  url += combineParams$v(params);
 	  return url;
 	};
 	base.bind(new CanalPlus());
 
-	var combineParams$t = util.combineParams;
+	var combineParams$u = util.combineParams;
 	function Coub() {
 	  this.provider = 'coub';
 	  this.defaultFormat = 'long';
@@ -270,7 +270,7 @@
 	    return undefined;
 	  }
 	  var url = baseUrl + vi.id;
-	  url += combineParams$t(params);
+	  url += combineParams$u(params);
 	  return url;
 	};
 	Coub.prototype.createLongUrl = function (vi, params) {
@@ -281,7 +281,7 @@
 	};
 	base.bind(new Coub());
 
-	var combineParams$s = util.combineParams,
+	var combineParams$t = util.combineParams,
 	  getTime$5 = util.getTime;
 	function Dailymotion() {
 	  this.provider = 'dailymotion';
@@ -323,7 +323,7 @@
 	  if (!vi.id || vi.mediaType !== this.mediaTypes.VIDEO) {
 	    return undefined;
 	  }
-	  return base + vi.id + combineParams$s(params);
+	  return base + vi.id + combineParams$t(params);
 	};
 	Dailymotion.prototype.createShortUrl = function (vi, params) {
 	  return this.createUrl('https://dai.ly/', vi, params);
@@ -340,7 +340,7 @@
 	};
 	base.bind(new Dailymotion());
 
-	var combineParams$r = util.combineParams;
+	var combineParams$s = util.combineParams;
 	function Loom() {
 	  this.provider = 'loom';
 	  this.defaultFormat = 'long';
@@ -369,7 +369,7 @@
 	    return undefined;
 	  }
 	  var url = baseUrl + vi.id;
-	  url += combineParams$r(params);
+	  url += combineParams$s(params);
 	  return url;
 	};
 	Loom.prototype.createLongUrl = function (vi, params) {
@@ -379,6 +379,46 @@
 	  return this.createUrl('//loom.com/embed/', vi, params);
 	};
 	base.bind(new Loom());
+
+	var combineParams$r = util.combineParams;
+	function Livid() {
+	  this.provider = 'livid';
+	  this.defaultFormat = 'long';
+	  this.formats = {
+	    "long": this.createLongUrl,
+	    embed: this.createEmbedUrl
+	  };
+	  this.mediaTypes = {
+	    VIDEO: 'video'
+	  };
+	}
+	Livid.prototype.parseUrl = function (url) {
+	  var match = url.match(/(?:watch|embed)\/([\w-]+)/i);
+	  return match ? match[1] : undefined;
+	};
+	Livid.prototype.parse = function (url, params) {
+	  var result = {
+	    mediaType: this.mediaTypes.VIDEO,
+	    params: params,
+	    id: this.parseUrl(url)
+	  };
+	  return result.id ? result : undefined;
+	};
+	Livid.prototype.createUrl = function (baseUrl, vi, params) {
+	  if (!vi.id || vi.mediaType !== this.mediaTypes.VIDEO) {
+	    return undefined;
+	  }
+	  var url = baseUrl + vi.id;
+	  url += combineParams$r(params);
+	  return url;
+	};
+	Livid.prototype.createLongUrl = function (vi, params) {
+	  return this.createUrl('https://livid.com/watch/', vi, params);
+	};
+	Livid.prototype.createEmbedUrl = function (vi, params) {
+	  return this.createUrl('https://livid.com/embed/', vi, params);
+	};
+	base.bind(new Livid());
 
 	var combineParams$q = util.combineParams;
 	function Tella() {

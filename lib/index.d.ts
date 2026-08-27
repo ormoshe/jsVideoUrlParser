@@ -6,6 +6,7 @@ export * from './provider/canalplus';
 export * from './provider/coub';
 export * from './provider/dailymotion';
 export * from './provider/loom';
+export * from './provider/livid';
 export * from './provider/soundcloud';
 export * from './provider/teachertube';
 export * from './provider/twitch';
