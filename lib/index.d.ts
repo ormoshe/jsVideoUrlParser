@@ -22,3 +22,4 @@ export * from './provider/spotlightr';
 export * from './provider/bunny';
 export * from './provider/canva';
 export * from './provider/gumlet';
+export * from './provider/heygen';
