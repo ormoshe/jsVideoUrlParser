@@ -200,7 +200,7 @@
 	};
 	base.bind(new Allocine());
 
-	var combineParams$w = util.combineParams;
+	var combineParams$x = util.combineParams;
 	function CanalPlus() {
 	  this.provider = 'canalplus';
 	  this.defaultFormat = 'embed';
@@ -233,12 +233,12 @@
 	  }
 	  var url = 'http://player.canalplus.fr/embed/';
 	  params.vid = vi.id;
-	  url += combineParams$w(params);
+	  url += combineParams$x(params);
 	  return url;
 	};
 	base.bind(new CanalPlus());
 
-	var combineParams$v = util.combineParams;
+	var combineParams$w = util.combineParams;
 	function Coub() {
 	  this.provider = 'coub';
 	  this.defaultFormat = 'long';
@@ -270,7 +270,7 @@
 	    return undefined;
 	  }
 	  var url = baseUrl + vi.id;
-	  url += combineParams$v(params);
+	  url += combineParams$w(params);
 	  return url;
 	};
 	Coub.prototype.createLongUrl = function (vi, params) {
@@ -281,7 +281,7 @@
 	};
 	base.bind(new Coub());
 
-	var combineParams$u = util.combineParams,
+	var combineParams$v = util.combineParams,
 	  getTime$5 = util.getTime;
 	function Dailymotion() {
 	  this.provider = 'dailymotion';
@@ -323,7 +323,7 @@
 	  if (!vi.id || vi.mediaType !== this.mediaTypes.VIDEO) {
 	    return undefined;
 	  }
-	  return base + vi.id + combineParams$u(params);
+	  return base + vi.id + combineParams$v(params);
 	};
 	Dailymotion.prototype.createShortUrl = function (vi, params) {
 	  return this.createUrl('https://dai.ly/', vi, params);
@@ -340,7 +340,7 @@
 	};
 	base.bind(new Dailymotion());
 
-	var combineParams$t = util.combineParams;
+	var combineParams$u = util.combineParams;
 	function Loom() {
 	  this.provider = 'loom';
 	  this.defaultFormat = 'long';
@@ -369,7 +369,7 @@
 	    return undefined;
 	  }
 	  var url = baseUrl + vi.id;
-	  url += combineParams$t(params);
+	  url += combineParams$u(params);
 	  return url;
 	};
 	Loom.prototype.createLongUrl = function (vi, params) {
@@ -380,7 +380,7 @@
 	};
 	base.bind(new Loom());
 
-	var combineParams$s = util.combineParams;
+	var combineParams$t = util.combineParams;
 	function Livid() {
 	  this.provider = 'livid';
 	  this.defaultFormat = 'long';
@@ -409,7 +409,7 @@
 	    return undefined;
 	  }
 	  var url = baseUrl + vi.id;
-	  url += combineParams$s(params);
+	  url += combineParams$t(params);
 	  return url;
 	};
 	Livid.prototype.createLongUrl = function (vi, params) {
@@ -420,7 +420,7 @@
 	};
 	base.bind(new Livid());
 
-	var combineParams$r = util.combineParams;
+	var combineParams$s = util.combineParams;
 	function Tella() {
 	  this.provider = 'tella';
 	  this.defaultFormat = 'long';
@@ -449,7 +449,7 @@
 	    return undefined;
 	  }
 	  var url = baseUrl + vi.id;
-	  url += combineParams$r(params);
+	  url += combineParams$s(params);
 	  return url;
 	};
 	Tella.prototype.createLongUrl = function (vi, params) {
@@ -460,7 +460,7 @@
 	};
 	base.bind(new Tella());
 
-	var combineParams$q = util.combineParams,
+	var combineParams$r = util.combineParams,
 	  getTime$4 = util.getTime;
 	function Twitch() {
 	  this.provider = 'twitch';
@@ -566,7 +566,7 @@
 	  } else {
 	    return undefined;
 	  }
-	  url += combineParams$q(params);
+	  url += combineParams$r(params);
 	  return url;
 	};
 	Twitch.prototype.createEmbedUrl = function (vi, params) {
@@ -585,12 +585,12 @@
 	  } else {
 	    return undefined;
 	  }
-	  url += combineParams$q(params);
+	  url += combineParams$r(params);
 	  return url;
 	};
 	base.bind(new Twitch());
 
-	var combineParams$p = util.combineParams,
+	var combineParams$q = util.combineParams,
 	  getTime$3 = util.getTime;
 	function Vimeo() {
 	  this.provider = 'vimeo';
@@ -650,7 +650,7 @@
 	    }
 	    delete params.hash;
 	  }
-	  url += combineParams$p(params);
+	  url += combineParams$q(params);
 	  if (startTime) {
 	    url += '#t=' + startTime;
 	  }
@@ -664,7 +664,7 @@
 	};
 	base.bind(new Vimeo());
 
-	var combineParams$o = util.combineParams,
+	var combineParams$p = util.combineParams,
 	  getTime$2 = util.getTime;
 	function Wistia() {
 	  this.provider = 'wistia';
@@ -729,7 +729,7 @@
 	    params.wtime = params.start;
 	    delete params.start;
 	  }
-	  url += combineParams$o(params);
+	  url += combineParams$p(params);
 	  return url;
 	};
 	Wistia.prototype.createLongUrl = function (vi, params) {
@@ -754,7 +754,7 @@
 	};
 	base.bind(new Wistia());
 
-	var combineParams$n = util.combineParams;
+	var combineParams$o = util.combineParams;
 	function Youku() {
 	  this.provider = 'youku';
 	  this.defaultFormat = 'long';
@@ -795,7 +795,7 @@
 	    return undefined;
 	  }
 	  var url = baseUrl + vi.id;
-	  url += combineParams$n(params);
+	  url += combineParams$o(params);
 	  return url;
 	};
 	Youku.prototype.createEmbedUrl = function (vi, params) {
@@ -812,12 +812,12 @@
 	    return undefined;
 	  }
 	  var url = 'http://player.youku.com/player.php/sid/' + vi.id + '/v.swf';
-	  url += combineParams$n(params);
+	  url += combineParams$o(params);
 	  return url;
 	};
 	base.bind(new Youku());
 
-	var combineParams$m = util.combineParams,
+	var combineParams$n = util.combineParams,
 	  getTime$1 = util.getTime;
 	function YouTube() {
 	  this.provider = 'youtube';
@@ -955,7 +955,7 @@
 	  if (vi.list) {
 	    params.list = vi.list;
 	  }
-	  url += combineParams$m(params);
+	  url += combineParams$n(params);
 	  if (vi.mediaType !== this.mediaTypes.PLAYLIST && startTime) {
 	    url += '#t=' + startTime;
 	  }
@@ -977,7 +977,7 @@
 	  if (vi.list) {
 	    params.list = vi.list;
 	  }
-	  url += combineParams$m(params);
+	  url += combineParams$n(params);
 	  return url;
 	};
 	YouTube.prototype.createImageUrl = function (baseUrl, vi, params) {
@@ -996,7 +996,7 @@
 	};
 	base.bind(new YouTube());
 
-	var combineParams$l = util.combineParams,
+	var combineParams$m = util.combineParams,
 	  getTime = util.getTime;
 	function SoundCloud() {
 	  this.provider = 'soundcloud';
@@ -1080,7 +1080,7 @@
 	  } else {
 	    return undefined;
 	  }
-	  url += combineParams$l(params);
+	  url += combineParams$m(params);
 	  if (startTime) {
 	    url += '#t=' + startTime;
 	  }
@@ -1096,12 +1096,12 @@
 	  } else {
 	    return undefined;
 	  }
-	  url += combineParams$l(params);
+	  url += combineParams$m(params);
 	  return url;
 	};
 	base.bind(new SoundCloud());
 
-	var combineParams$k = util.combineParams;
+	var combineParams$l = util.combineParams;
 	function TeacherTube() {
 	  this.provider = 'teachertube';
 	  this.alternatives = [];
@@ -1169,7 +1169,7 @@
 	    url += vi.mediaType + '/';
 	  }
 	  url += vi.id;
-	  url += combineParams$k(params);
+	  url += combineParams$l(params);
 	  return url;
 	};
 	TeacherTube.prototype.createEmbedUrl = function (vi, params) {
@@ -1182,12 +1182,12 @@
 	  } else {
 	    return undefined;
 	  }
-	  url += combineParams$k(params);
+	  url += combineParams$l(params);
 	  return url;
 	};
 	base.bind(new TeacherTube());
 
-	var combineParams$j = util.combineParams;
+	var combineParams$k = util.combineParams;
 	function TikTok() {
 	  this.provider = 'tiktok';
 	  this.defaultFormat = 'long';
@@ -1218,12 +1218,12 @@
 	  } else {
 	    return undefined;
 	  }
-	  url += combineParams$j(params);
+	  url += combineParams$k(params);
 	  return url;
 	};
 	base.bind(new TikTok());
 
-	var combineParams$i = util.combineParams;
+	var combineParams$j = util.combineParams;
 	function Voomly() {
 	  this.provider = 'voomly';
 	  this.defaultFormat = 'long';
@@ -1251,7 +1251,7 @@
 	    return undefined;
 	  }
 	  var url = baseUrl + vi.id;
-	  url += combineParams$i(params);
+	  url += combineParams$j(params);
 	  return url;
 	};
 	Voomly.prototype.createLongUrl = function (vi, params) {
@@ -1259,7 +1259,7 @@
 	};
 	base.bind(new Voomly());
 
-	var combineParams$h = util.combineParams;
+	var combineParams$i = util.combineParams;
 	function Spotlightr() {
 	  this.provider = 'spotlightr';
 	  this.defaultFormat = 'long';
@@ -1288,13 +1288,92 @@
 	    return undefined;
 	  }
 	  var url = baseUrl + vi.id;
-	  url += combineParams$h(params);
+	  url += combineParams$i(params);
 	  return url;
 	};
 	Spotlightr.prototype.createLongUrl = function (vi, params) {
 	  return this.createUrl('https://videos.spotlightr.com/watch/', vi, params);
 	};
 	base.bind(new Spotlightr());
+
+	var combineParams$h = util.combineParams;
+	function SproutVideo() {
+	  this.provider = 'sproutvideo';
+	  this.alternatives = ['vids'];
+	  this.defaultFormat = 'long';
+	  this.formats = {
+	    "long": this.createLongUrl,
+	    embed: this.createEmbedUrl
+	  };
+	  this.mediaTypes = {
+	    VIDEO: 'video'
+	  };
+	}
+	SproutVideo.prototype.parseEmbedUrl = function (url) {
+	  var match = url.match(/(?:embed|file)\/([a-zA-Z0-9]+)\/([a-zA-Z0-9]+)/i);
+	  if (!match) {
+	    return undefined;
+	  }
+	  return {
+	    id: match[1],
+	    token: match[2]
+	  };
+	};
+	SproutVideo.prototype.parseShareUrl = function (url) {
+	  var match = url.match(/(?:https?:\/\/)?([^/]+\.vids\.io)\/videos\/([a-zA-Z0-9]+)(?:\/([\w-]+))?/i);
+	  if (!match) {
+	    return undefined;
+	  }
+	  var result = {
+	    host: match[1],
+	    id: match[2]
+	  };
+	  if (match[3]) {
+	    result.slug = match[3];
+	  }
+	  return result;
+	};
+	SproutVideo.prototype.parse = function (url, params) {
+	  var parsed = this.parseEmbedUrl(url) || this.parseShareUrl(url);
+	  if (!parsed) {
+	    return undefined;
+	  }
+	  var result = {
+	    mediaType: this.mediaTypes.VIDEO,
+	    params: params,
+	    id: parsed.id
+	  };
+	  if (parsed.token) {
+	    result.token = parsed.token;
+	  }
+	  if (parsed.host) {
+	    result.host = parsed.host;
+	  }
+	  if (parsed.slug) {
+	    result.slug = parsed.slug;
+	  }
+	  return result;
+	};
+	SproutVideo.prototype.createEmbedUrl = function (vi, params) {
+	  if (!vi.id || !vi.token || vi.mediaType !== this.mediaTypes.VIDEO) {
+	    return undefined;
+	  }
+	  var url = 'https://videos.sproutvideo.com/embed/' + vi.id + '/' + vi.token;
+	  url += combineParams$h(params);
+	  return url;
+	};
+	SproutVideo.prototype.createLongUrl = function (vi, params) {
+	  if (vi.host && vi.id && vi.mediaType === this.mediaTypes.VIDEO) {
+	    var url = 'https://' + vi.host + '/videos/' + vi.id;
+	    if (vi.slug) {
+	      url += '/' + vi.slug;
+	    }
+	    url += combineParams$h(params);
+	    return url;
+	  }
+	  return this.createEmbedUrl(vi, params);
+	};
+	base.bind(new SproutVideo());
 
 	var combineParams$g = util.combineParams;
 	function Bunny() {

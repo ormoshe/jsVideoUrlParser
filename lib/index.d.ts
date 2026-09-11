@@ -19,6 +19,7 @@ export * from './provider/tiktok';
 export * from './provider/voomly';
 export * from './provider/veed';
 export * from './provider/spotlightr';
+export * from './provider/sproutvideo';
 export * from './provider/bunny';
 export * from './provider/canva';
 export * from './provider/gumlet';
